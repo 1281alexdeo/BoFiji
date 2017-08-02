@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="bankoffiji@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.3">
+    <root id="1"/>
+    <schema id="2" parent="1" name="bankoffiji">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="airport_api"/>
+    <schema id="4" parent="1" name="blog"/>
+    <schema id="5" parent="1" name="cdcol"/>
+    <schema id="6" parent="1" name="errand_db"/>
+    <schema id="7" parent="1" name="forum"/>
+    <schema id="8" parent="1" name="gsh"/>
+    <schema id="9" parent="1" name="information_schema"/>
+    <schema id="10" parent="1" name="laravel"/>
+    <schema id="11" parent="1" name="laravel54"/>
+    <schema id="12" parent="1" name="laravelcms"/>
+    <schema id="13" parent="1" name="mail"/>
+    <schema id="14" parent="1" name="middleware"/>
+    <schema id="15" parent="1" name="mysql"/>
+    <schema id="16" parent="1" name="ntu"/>
+    <schema id="17" parent="1" name="performance_schema"/>
+    <schema id="18" parent="1" name="phpmyadmin"/>
+    <schema id="19" parent="1" name="restapi"/>
+    <schema id="20" parent="1" name="sisa"/>
+    <schema id="21" parent="1" name="springtutorial"/>
+    <schema id="22" parent="1" name="test"/>
+    <schema id="23" parent="1" name="vidlydb"/>
+    <schema id="24" parent="1" name="webauth"/>
+  </database-model>
+</dataSource>
