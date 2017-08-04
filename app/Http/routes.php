@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/', [
+    'uses' => 'UserController@index',
+    'as' => 'home'
+]);
+
+Route::get('/user/register',[
+    'uses' => 'UserController@getRegister',
+    'as' => 'user.register'
+]);
+
+Route::post('/user/register',[
+    'uses' => 'UserController@postRegister',
+    'as' => 'user.register'
+]);
+
+Route::get('/user/profile',[
+   'uses' => 'UserController@getProfile',
+   'as' => 'user.profile'
+]);
+
