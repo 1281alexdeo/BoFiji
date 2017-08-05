@@ -30,11 +30,10 @@
                                     <h1>Loan Deals</h1>
                                     <ul class="feature-list">
                                         <li><i class="fa fa-check">Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check">Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check">Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check">Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check">Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check">Crazy loan interest rate</i></li>
+                                        <li><i class="fa fa-check">No monthly account service fee</i></li>
+                                        <li><i class="fa fa-check">Birth certificate or passport</i></li>
+                                        <li><i class="fa fa-check">You'll need to complete our 100 point identity check</i></li>
+                                        <li><i class="fa fa-check">Unlimited paper and electronic deposits.</i></li>
                                     </ul>
                                     <a href="" class="btn btn-primary btn-lg">Read more</a>
                                 </div>
@@ -115,28 +114,22 @@
             <div class="row">
                 <div class="col-md-4">
                     <i class="fa fa-user fa-5x"></i>
-                    <h2>24/7 Customer care</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos distinctio molestias neque repudiandae! Consectetur corporis dignissimos eos error fuga necessitatibus quisquam quo repellendus reprehenderit sint. Cupiditate impedit iste quia.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur dolorem eos laudantium non. Dicta ipsum porro praesentium? Dolor dolorem doloribus hic natus nemo quo ratione reprehenderit sequi sint voluptatem.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
+                    <h2>Personaa Account</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
                     <p><a href="" class="btn btn-default">View Details</a></p>
                 </div>
 
                 <div class="col-md-4">
                     <i class="fa fa-phone fa-5x"></i>
-                    <h2>24/7 Customer care</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos distinctio molestias neque repudiandae! Consectetur corporis dignissimos eos error fuga necessitatibus quisquam quo repellendus reprehenderit sint. Cupiditate impedit iste quia.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur dolorem eos laudantium non. Dicta ipsum porro praesentium? Dolor dolorem doloribus hic natus nemo quo ratione reprehenderit sequi sint voluptatem.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
+                    <h2>Business Account</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
                     <p><a href="" class="btn btn-default">View Details</a></p>
                 </div>
 
                 <div class="col-md-4">
                     <i class="fa fa-briefcase fa-5x"></i>
-                    <h2>24/7 Customer care</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dignissimos distinctio molestias neque repudiandae! Consectetur corporis dignissimos eos error fuga necessitatibus quisquam quo repellendus reprehenderit sint. Cupiditate impedit iste quia.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur dolorem eos laudantium non. Dicta ipsum porro praesentium? Dolor dolorem doloribus hic natus nemo quo ratione reprehenderit sequi sint voluptatem.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
+                    <h2>Loans</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
                     <p><a href="" class="btn btn-default">View Details</a></p>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Address;
 use App\User;
 use Illuminate\Http\Request;
@@ -35,7 +36,13 @@ class UserController extends Controller
             'houseNumber' => 'required',
             'street' => 'required',
             'town' => 'required',
-            'suburb' => 'required'
+            'suburb' => 'required',
+            'accountNumber' => 'required',
+            'fnpfNumber' => 'required',
+            'fircID' => 'required',
+            'accountType' => 'required',
+            'debitCardNumber' => 'required',
+            'branch' => 'required'
         ]);
 
         $address = new Address([
@@ -46,6 +53,16 @@ class UserController extends Controller
             ]);
         $address->save();
 
+        $account = new Account([
+            'account_number' => $request['accountNumber'],
+            'fnpf_number' => $request['fnpfNumber'],
+            'firc_id' => $request['fircID'],
+            'account_type' => $request['accountType'],
+            'debit_card_number' => $request['debitCardNumber'],
+            'branch' => $request['branch'],
+        ]);
+        $account->save();
+
         $user = new User([
             'first_name' => $request['firstName'],
             'last_name' => $request['lastName'],
@@ -54,9 +71,11 @@ class UserController extends Controller
             'tin_number' => $request['tinNumber'],
             'occupation' => $request['occupation'],
             'email' => $request['email'],
-            'phone' => $request['phone']
+            'phone' => $request['phone'],
+            'password' => bcrypt('test_pw')
         ]);
         $address->user()->save($user);
+        $account->user()->save($user);
 
         return redirect()->route('user.profile')->with([
             'success' => $request['firstName'] . ' '. $request['lastName']. ' successfully registered.'

@@ -13,6 +13,7 @@ class UserTableSeeder extends Seeder
     {
        $user = new \App\User([
            'address_id' => 1,
+           'account_id' => 1,
            'first_name' => 'Karunesh',
            'last_name' => 'Ratman',
            'gender' => 'Male',
@@ -27,6 +28,7 @@ class UserTableSeeder extends Seeder
 
         $user = new \App\User([
             'address_id' => 2,
+            'account_id' => 2,
             'first_name' => 'Alex',
             'last_name' => 'Dharmendra',
             'gender' => 'Male',
@@ -41,6 +43,7 @@ class UserTableSeeder extends Seeder
 
         $user = new \App\User([
             'address_id' => 3,
+            'account_id' => 3,
             'first_name' => 'Sunjay',
             'last_name' => 'Sharma',
             'gender' => 'Male',

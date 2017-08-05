@@ -17,4 +17,8 @@ class User extends Authenticatable
     public function address(){
         return $this->belongsTo('App\Address');
     }
+
+    public function account(){
+        return $this->belongsTo('App\Account');
+    }
 }

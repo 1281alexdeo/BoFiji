@@ -10,7 +10,7 @@
 
 @section('content')
     <br>
-    <div class="container-fluid"><h1 class="page-header"><i class="fa fa-user"></i> Register</h1></div>
+    <div class="container-fluid"><h1 class="page-header"><i class="fa fa-user-plus"></i> Register</h1></div>
     @if(count($errors) > 0)
         <div class="alert alert-danger container">
             @foreach($errors->all() as $error)
@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <div class="container-fluid">
+    <div class="container">
         <form action="{{ route('user.register') }}" method="post" class="addUser" name="" id="" >
             <div class="row">
                 <div class="col-md-6">
@@ -37,7 +37,7 @@
                                         <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name *" value="{{ Request::old('lastName') }}" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="gender" id="gender" list="sex" placeholder="Gender *" value="{{ Request::old('lastName') }}" required/>
+                                        <input type="text" class="form-control" name="gender" id="gender" list="sex" placeholder="Gender *" value="{{ Request::old('gender') }}" required/>
                                         <datalist id="sex">
                                             <option value="Male"></option>
                                             <option value="Female"></option>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" list="status" class="form-control" name="marriedStatus" id="marriedStatus" placeholder="Marital Status ">
+                                        <input type="text" list="status" class="form-control" name="marriedStatus" id="marriedStatus" value="{{ Request::old('marriedStatus') }}" placeholder="Marital Status" required/>
                                         <datalist id="status">
                                             <option value="Married"></option>
                                             <option value="Living Apart"></option>
@@ -81,21 +81,21 @@
                                         <input type="email" class="form-control" name="email" id="email" placeholder="Email *" value="{{ Request::old('email') }}" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="phone" id="phone" pattern="[0-9]{7}" placeholder="Phone Number" value="{{ Request::old('phone') }}"/>
+                                        <input type="text" class="form-control" name="phone" id="phone" pattern="[0-9]{7}" placeholder="Phone Number" value="{{ Request::old('phone') }}" required />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="houseNumber" id="houseNumber" placeholder="House Number">
+                                        <input type="text" class="form-control" name="houseNumber" id="houseNumber" value="{{ Request::old('houseNumber') }}" placeholder="House Number" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="street" id="street" placeholder="Street Name">
+                                        <input type="text" class="form-control" name="street" id="street" value="{{ Request::old('street') }}" placeholder="Street Name" required />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="town" id="town" placeholder="Town">
+                                        <input type="text" class="form-control" name="town" id="town" value="{{ Request::old('town') }}" placeholder="Town" required />
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="suburb" id="suburb" placeholder="Suburb">
+                                        <input type="text" class="form-control" name="suburb" id="suburb" value="{{ Request::old('suburb') }}" placeholder="Suburb" required />
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +103,89 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Bank account form details-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Account Info</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="accountNumber" id="accountNumber" placeholder="BoF Account Number" value="{{ Request::old('accountNumber') }}" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="fnpfNumber" id="fnpfNumber" placeholder="FNPF Number" value="{{ Request::old('fnpfNumber') }}" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="fircID" id="fircID" placeholder="FIRC ID" value="{{ Request::old('fircID') }}" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" list="type" class="form-control" name="accountType" id="accountType" placeholder="Account Type" value="{{ Request::old('accountType') }}" required />
+                                        <datalist id="type">
+                                            <option value="Savings"></option>
+                                            <option value="Simple Access"></option>
+                                        </datalist>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="debitCardNumber" id="debitCardNumber" placeholder="Debit Card Number" value="{{ Request::old('debitCardNumber') }}" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" list="branchNames" name="branch" id="branch" placeholder="Branch" value="{{ Request::old('branch') }}" required/>
+                                        <datalist id="branchNames">
+                                            <option value="Laucala"></option>
+                                            <option value="Suva"></option>
+                                            <option value="Ba"></option>
+                                            <option value="Lautoka"></option>
+                                            <option value="Nausori"></option>
+                                            <option value="Nadi"></option>
+                                            <option value="Levuka"></option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Employment Info</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="employer" id="employer" placeholder="Employer Name" value="{{ Request::old('employer') }}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="location" id="location" placeholder="Location" value="{{ Request::old('location') }}"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="taxFileNumber" id="taxFileNumber" placeholder="Tax File Number" value="{{ Request::old('location') }}"  />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" name="employedSince" id="employedSince" placeholder="Employed Since" value="{{ Request::old('employedSince') }}"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="employerAddress" id="employerAddress" placeholder="Employer Address" value="{{ Request::old('employerAddress') }}"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="employeePhone" id="employeePhone" placeholder="Employer Phone" value="{{ Request::old('employerAddress') }}"  />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--//// Bank account ends-->
 
             <div class="row">
                 <div class="col-md-6">
