@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'admin@bankoffiji.com.fj', 'name' => 'Bank of Fiji'],
 
     /*
     |--------------------------------------------------------------------------

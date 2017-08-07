@@ -10,10 +10,8 @@
 
 @section('content')
     <br>
-    <div class="container-fluid"><h1 class="page-header"><i class="fa fa-user-plus"></i> Register</h1></div>
-
     @include('errors.sessionGeneralErrors')
-
+    <div class="container-fluid"><h1 class="page-header"><i class="fa fa-user-plus"></i> Register</h1></div>
     <div class="container">
         <form action="{{ route('user.register') }}" method="post" class="addUser" name="" id="" enctype="multipart/form-data">
             <div class="row">

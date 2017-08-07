@@ -11,10 +11,13 @@
 |
 */
 
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/{id?}', [
     'uses' => 'UserController@index',
     'as' => 'home'
 ]);
+
 
 Route::group(['prefix' => 'user'], function(){
 
@@ -28,6 +31,16 @@ Route::group(['prefix' => 'user'], function(){
         Route::post('/register',[
             'uses' => 'UserController@postRegister',
             'as' => 'user.register'
+        ]);
+
+        Route::get('/email/verification',[
+            'uses' => 'UserController@getEmailVerification',
+            'as' => 'email.verification'
+        ]);
+
+        Route::get('account/activated',[
+            'uses' => 'UserController@emailResponse',
+            'as' => 'email.response'
         ]);
 
         Route::get('/signin',[

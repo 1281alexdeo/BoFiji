@@ -9,7 +9,6 @@
     @endsection
 
 @section('content')
-
     <!-- Carousel================================================== -->
     <section>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
