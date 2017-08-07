@@ -7,15 +7,53 @@ use App\Address;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    public  function index(){
+    public  function index(Request $request, $id = null){
+        if(Session::has('id')){
+            $id = Session::get('id');
+            $user = User::find($id);
+            return view('frontend.index', ['user' => $user]);
+        }
+
         return view('frontend.index');
     }
 
-    public function getProfile(){
-        return view('frontend.user.profile');
+    public function getSignin(){
+        return view('frontend.user.signin');
+    }
+
+    public function postSignin(Request $request){
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required|min:6'
+        ]);
+
+        if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
+            $user = User::where(['email' => $request['email']])->first();
+            $request->session()->put('id',$user->id);
+            return redirect()->route('user.profile',['id' => $user->id]);
+        }
+        return redirect()->back()->with(['fail' => 'Check your email or password']);
+    }
+
+    public function signout(){
+        Auth::logout();
+
+        return redirect()->route('home');
+    }
+
+    public function getProfile($id){
+        $user = User::find($id);
+        return view('frontend.user.profile',['user' => $user]);//errors with this method and related routes
+    }
+
+    public function postProfile($id){
+        $user = User::find($id);
+        return view('frontend.user.profile',['user' => $user]);
     }
 
     public function getRegister(){
@@ -24,6 +62,7 @@ class UserController extends Controller
     }
 
     public function postRegister(Request $request){
+
         $this->validate($request, [
             'firstName' => 'required|alpha',
             'lastName' => 'required|alpha',
@@ -44,6 +83,17 @@ class UserController extends Controller
             'debitCardNumber' => 'required',
             'branch' => 'required'
         ]);
+
+        $input = $request->all();
+        $userImage = null;
+
+        if($photo = $request->file('photo')){
+            $photoName = time() .'_'. $photo->getClientOriginalName();
+            $photo->move('profileImage', $photoName);
+            $userImage = UserPhoto::create(['profile_photo' => $photoName]);
+            $input['photo'] = $userImage->id;
+        }//check for uploaded photo
+
 
         $address = new Address([
             'street_name' => $request['street'],
@@ -77,7 +127,7 @@ class UserController extends Controller
         $address->user()->save($user);
         $account->user()->save($user);
 
-        return redirect()->route('user.profile')->with([
+        return redirect()->route('user.signin')->with([
             'success' => $request['firstName'] . ' '. $request['lastName']. ' successfully registered.'
         ]);
     }

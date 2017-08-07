@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     protected $fillable = [
-        'address_id','first_name','last_name', 'gender', 'marital_status','tin_number', 'occupation', 'email','phone', 'password'
+        'first_name','last_name', 'gender', 'marital_status','tin_number', 'occupation', 'email','phone', 'password'
     ];
 
     protected $hidden = [
@@ -21,4 +21,9 @@ class User extends Authenticatable
     public function account(){
         return $this->belongsTo('App\Account');
     }
+
+    public function payReceiver(){
+        return $this->hasMany('App\PayReceiver');
+    }
+
 }

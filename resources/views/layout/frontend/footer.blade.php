@@ -1,16 +1,16 @@
 <footer class="modal-footer">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
-            <div class="col-md-4">
-                <span class="copyright">Copyright &copy; Bank of Fiji 2017</span>
+            <div class="col-md-4 ">
+                <span class="copyright pull-left">Copyright &copy; Bank of Fiji 2017</span>
             </div>
             <div class="col-md-4">
-                <ul class="list-inline social-buttons">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                <ul class="list-inline social-buttons text-center">
+                    <li><a href="#"><i class="fa fa-twitter-square fa-3x"></i></a>
                     </li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    <li><a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
                     </li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    <li><a href="#"><i class="fa fa-linkedin-square fa-3x"></i></a>
                     </li>
                 </ul>
             </div>

@@ -6761,7 +6761,6 @@ button.close {
 
 body{
     padding-top: 41px;
-
 }
 
 .carousel{
@@ -6798,6 +6797,10 @@ body{
 
 .addUser{
     padding-top: 50px;
+}
+
+footer{
+    margin-bottom: 50px;
 }
 
 /*!

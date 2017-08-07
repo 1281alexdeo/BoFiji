@@ -29,11 +29,11 @@
                                     <!--text goes in here-->
                                     <h1>Loan Deals</h1>
                                     <ul class="feature-list">
-                                        <li><i class="fa fa-check">Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check">No monthly account service fee</i></li>
-                                        <li><i class="fa fa-check">Birth certificate or passport</i></li>
-                                        <li><i class="fa fa-check">You'll need to complete our 100 point identity check</i></li>
-                                        <li><i class="fa fa-check">Unlimited paper and electronic deposits.</i></li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Crazy loan interest rate</i></li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>No monthly account service fee</i></li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Birth certificate or passport</i></li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>You'll need to complete our 100 point identity check</i></li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Unlimited paper and electronic deposits.</i></li>
                                     </ul>
                                     <a href="" class="btn btn-primary btn-lg">Read more</a>
                                 </div>
@@ -113,22 +113,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <i class="fa fa-user fa-5x"></i>
-                    <h2>Personaa Account</h2>
+                    <div class="text-center">
+                        <div><i class="fa fa-user fa-5x "></i></div>
+                        <h2 class="page-header">Personal Account</h2>
+                    </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
                     <p><a href="" class="btn btn-default">View Details</a></p>
                 </div>
 
                 <div class="col-md-4">
-                    <i class="fa fa-phone fa-5x"></i>
-                    <h2>Business Account</h2>
+                    <div class="text-center">
+                        <div><i class="fa fa-phone fa-5x text-center"></i></div>
+                        <h2 class="page-header">Business Account</h2>
+                    </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
                     <p><a href="" class="btn btn-default">View Details</a></p>
                 </div>
 
                 <div class="col-md-4">
-                    <i class="fa fa-briefcase fa-5x"></i>
-                    <h2>Loans</h2>
+                    <div class="text-center">
+                        <div><i class="fa fa-briefcase fa-5x text-center"></i></div>
+                        <h2 class="page-header">Loans</h2>
+                    </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dolorem doloremque dolorum eaque, eos eum facilis laborum mollitia quibusdam reiciendis soluta veniam, voluptate? Molestiae, qui, quia. Consectetur obcaecati quis similique?</p>
                     <p><a href="" class="btn btn-default">View Details</a></p>
                 </div>
