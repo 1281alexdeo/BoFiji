@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PayReceiver;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
@@ -69,6 +70,18 @@ class PaymentController extends Controller
                 ]);
                 $user->payReceiver()->save($receiver);
                 $concatAmount = $receiverAmount.'.00';
+
+                $userData = ['email' => $user->email, 'name' =>$user->first_name];
+
+                $contentData = [
+                    'title' => 'Your money transfer was successful',
+                    'content' => 'CHECKOUT AMOUNT : $' . $receiverAmount . '.00. TO : '. $receiverName .'.'
+                ];
+
+                Mail::send('email.paymentNotification', $contentData, function($message) use($userData){
+                    $message->to($userData['email'], $userData['name'])->subject('BoF Transaction Summary');
+                });
+
                 return redirect()->route('user.profile',$user_id)->with(['success' => 'Successfully transferred $'.$concatAmount]);
         }
 
