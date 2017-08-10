@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Khill\Lavacharts\Charts\Chart;
 
 class UserController extends Controller
 {
@@ -60,6 +61,13 @@ class UserController extends Controller
         $user = User::find($id);
         $paymenthistory = PayReceiver::where('user_id',$id)->orderBy('created_at', 'desc')->paginate(5);
         $totalPay = PayReceiver::where('user_id', $id)->count();
+
+        //charts
+
+            //to be created later link to follow =>
+                //https://www.youtube.com/watch?annotation_id=annotation_2861041605&feature=iv&src_vid=IEhZTcpbknA&v=KrAvrU2XYuY
+
+        //charts end
 
         return view('frontend.user.profile',['user' => $user, 'payhistory' => $paymenthistory, 'totalPay' => $totalPay]);
     }
@@ -138,7 +146,7 @@ class UserController extends Controller
 
     public function sendEmail(Request $request){
         $data = [
-            'title' => 'Thank you for banking with us',
+            'title' => 'Thank you for banking with us.',
             'content' => 'Your password is: \'test_pw\'. Use it to login by clicking the link '
         ];
 

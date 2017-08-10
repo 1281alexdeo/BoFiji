@@ -36,7 +36,7 @@
                                 FNPF Ref: <strong>{{ $user->account->fnpf_number }}</strong><br>
                                 FIRC ID: <strong>{{ $user->account->firc_id }}</strong> <br>
                                 Bank branch: <strong>{{ $user->account->branch }}</strong><br>
-                                Registered on: <strong>{{ $user->account->created_at->diffForHumans() }}</strong>
+                                Registered on: <strong>{{ $user->account->created_at->formatLocalized('%A %d %B %Y') }}</strong>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                         @foreach($payhistory as $receiver)
                                             <tr>
                                                 <td>{{$receiver->created_at->diffForHumans()}}</td>
-                                                <td>{{$receiver->name}}</td>
+                                                <td><a href="">{{$receiver->name}}</a></td>
                                                 <td>FJ ${{ $receiver->amount}}.00</td>
                                                 <td>{{ $receiver->description }}</td>
                                             </tr>
@@ -108,11 +108,15 @@
                 </div>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><i class="fa fa-calendar fa-2x pull-right" aria-hidden="true"></i> Payment Summary</div>
+                        <div class="panel-heading"><i class="fa fa-bars fa-2x pull-right" aria-hidden="true"></i> Payment Summary</div>
                         <div class="panel-body">
                             <table class="table">
                                 <thead>
-                                You have already made {{ $totalPay }} Payments since {{ $user->account->created_at->diffForHumans() }}
+                                @if($totalPay)
+                                    You have made <a href=""><strong>{{ $totalPay }} Payments</strong></a> since {{ $user->account->created_at->formatLocalized('%A %d %B %Y') }}
+                                    @else
+                                    You haven't made any payments yet.
+                                @endif
                                 </thead>
                                 <tbody>
                                 <tr>

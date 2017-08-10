@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
 
+
         /*
          * Application Service Providers...
          */
@@ -157,6 +158,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+
     ],
 
     /*
@@ -203,6 +206,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Nexmo' => \Nexmo\Laravel\Facade\Nexmo::class,
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
     ],
 
