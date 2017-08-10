@@ -8,12 +8,33 @@
     <title>Document</title>
 </head>
 <body>
+        <h2>Transaction Summary</h2>
+        <table>
+            <thead>
+             <tr>
+                 <th>Transaction ID</th>
+                 <th>To</th>
+                 <th>Amount</th>
+                 <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ $transID }}</td>
+                <td>{{ $receiverName }}</td>
+                <td>${{ $amount }}</td>
+                <td>{{ $description }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <hr>
+        <p>Subtotal: ${{ $amount }}<br>Total: ${{ $amount }}</p>
+        <hr>
 
-        <h2>{{ $title }}</h2> <br>
-        <h4>Transaction Summary</h4><br>
-        {{ $content }}<br>
+        <br>
         <p style="Color: blue; font-weight: bold;">From our BoF team. <br>
-            Thank your for banking with us.</p>
+            Thank you for banking with us.</p>
 
 </body>
 </html>

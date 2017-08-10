@@ -12,8 +12,8 @@
 
     <div class="row container">
         @include('errors.sessionGeneralErrors')
-        <div class="col-md-4 col-md-offset-4 well" style="margin-top: 100px;">
-            <h1>Sign in</h1>
+        <div class="col-md-5 col-md-offset-5 well" style="margin-top: 100px;">
+            <h3>Login credentials</h3>
             <form action="{{ route('user.signin') }}" method="post">
                 <div class="form-group">
                     <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{ Request::old('email') }}">

@@ -92,6 +92,16 @@ Route::group(['prefix' => 'user'], function(){
             'as' => 'checkout'
         ]);
 
+        Route::get('schedule/payment', [
+            'uses' => 'PaymentController@getSchedulePay',
+            'as' => 'schedule.pay'
+        ]);
+
+        Route::post('schedule/payment', [
+            'uses' => 'PaymentController@postSchedulePay',
+            'as' => 'schedule.pay'
+        ]);
+
     });
 
 });

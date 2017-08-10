@@ -28,11 +28,11 @@
                                     <!--text goes in here-->
                                     <h1>Loan Deals</h1>
                                     <ul class="feature-list">
-                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Crazy loan interest rate</i></li>
-                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>No monthly account service fee</i></li>
-                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Birth certificate or passport</i></li>
-                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>You'll need to complete our 100 point identity check</i></li>
-                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i>Unlimited paper and electronic deposits.</i></li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Crazy loan interest rate</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;No monthly account service fee</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Birth certificate or passport</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Complete our 100 point identity check</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Unlimited paper and electronic deposits</li>
                                     </ul>
                                     <a href="" class="btn btn-primary btn-lg">Read more</a>
                                 </div>
@@ -51,14 +51,12 @@
                             <div class="row">
                                 <div class="col-md-7 col-sm-4">
                                     <!--text goes in here-->
-                                    <h1>100% assurance of insurance </h1>
-                                    <ul>
-                                        <li><i class="fa fa-check"></i>Secure your future now</li>
-                                        <li><i class="fa fa-check"></i>Secure your future now</li>
-                                        <li><i class="fa fa-check"></i>Secure your future now</li>
-                                        <li><i class="fa fa-check"></i>Secure your future now</li>
-                                        <li><i class="fa fa-check"></i>Secure your future now</li>
-                                        <li><i class="fa fa-check"></i>Secure your future now</li>
+                                    <h1>99.99% assurance of insurance </h1>
+                                    <ul class="feature-list">
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Secure your future now</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Life Insurance</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Retirement Insurance</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Debit Card Insurance Condition apply</li>
                                     </ul>
                                     <a href="" class="btn btn-primary btn-lg">Read more</a>
                                 </div>
@@ -78,13 +76,13 @@
                                 <div class="col-md-7 col-sm-4">
                                     <!--text goes in here-->
                                     <h1>We care for you</h1>
-                                    <ul>
-                                        <li><i class="fa fa-check"></i>Book with our travelling agent</li>
-                                        <li><i class="fa fa-check"></i>Book with our travelling agent</li>
-                                        <li><i class="fa fa-check"></i>Book with our travelling agent</li>
-                                        <li><i class="fa fa-check"></i>Book with our travelling agent</li>
-                                        <li><i class="fa fa-check"></i>Book with our travelling agent</li>
-                                        <li><i class="fa fa-check"></i>Book with our travelling agent</li>
+                                    <ul class="feature-list">
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Book with our travelling agent</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Book with our travelling agent</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Book with our travelling agent</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Book with our travelling agent</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Book with our travelling agent</li>
+                                        <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp;Book with our travelling agent</li>
                                     </ul>
                                     <a href="" class="btn btn-primary btn-lg">Read more</a>
                                 </div>

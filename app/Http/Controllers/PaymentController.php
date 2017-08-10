@@ -7,11 +7,15 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class PaymentController extends Controller
 {
     public function getPayNow(){
-        return view('frontend.payment.create');
+        $user = Session::has('user') ? Session::get('user') : null;
+
+        return view('frontend.payment.create', ['user' => $user]);
     }
 
     public function postPayNow(Request $request){
@@ -24,6 +28,7 @@ class PaymentController extends Controller
         ]);
 
         if(!is_null($request['amount'])){
+            //store data in session
             $request->session()->put([
                 'receiver' => $request['receiver_name'],
                 'receiver_account' => $request['receiver_account_number'],
@@ -37,10 +42,13 @@ class PaymentController extends Controller
     }
 
     public function getCheckout(){
-
+        //get checkout amount from session
         $send_total = Session::has('receiver_amount') ? Session::get('receiver_amount') : null;
+        //concatenate with prefix 00
         $total_amount = $send_total.'.00';
-        return view('frontend.payment.checkout', ['total' => $total_amount]);
+        $user = Session::has('user') ? Session::get('user') : null;
+        //send the amount to view
+        return view('frontend.payment.checkout', ['total' => $total_amount, 'user' => $user]);
     }
 
     public function postCheckout(Request $request){
@@ -73,21 +81,43 @@ class PaymentController extends Controller
 
                 $userData = ['email' => $user->email, 'name' =>$user->first_name];
 
+//                $contentData = [
+//                    'title' => 'Your money transfer was successful',
+//                    'content' => 'CHECKOUT AMOUNT : $' . $receiverAmount . '.00. TO : '. $receiverName .'.'
+//                ];
+
                 $contentData = [
-                    'title' => 'Your money transfer was successful',
-                    'content' => 'CHECKOUT AMOUNT : $' . $receiverAmount . '.00. TO : '. $receiverName .'.'
+                    'transID' => Str::random(5),
+                    'receiverName' => $receiverName,
+                    'amount' => $receiverAmount,
+                    'description' => $receiverDescription
                 ];
 
+                //send the email
                 Mail::send('email.paymentNotification', $contentData, function($message) use($userData){
                     $message->to($userData['email'], $userData['name'])->subject('BoF Transaction Summary');
                 });
 
+                //send text message
+//                Nexmo::message()->send([
+//                    'to' => '6797221422',
+//                    'from' => 'Bank of Fiji',
+//                    'text' => 'Successfully send a message'
+//                ]);
+
                 return redirect()->route('user.profile',$user_id)->with(['success' => 'Successfully transferred $'.$concatAmount]);
         }
 
-
-
-
+        //if fail redirect to pay now page
         return redirect()->route('pay.now')->with(['fail' => 'Check your card details']);
+    }
+
+    public function getSchedulePay(){
+        if(Session::has('user')){
+            $user = Session::get('user');
+            return view('frontend.payment.schedule', ['user' => $user]);
+        }
+
+        return redirect()->route('home');
     }
 }

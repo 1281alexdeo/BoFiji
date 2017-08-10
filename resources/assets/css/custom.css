@@ -29,6 +29,10 @@ body{
     height: 420px;
 }
 
+.feature-list {
+    list-style: none;
+}
+
 .ad-image{
     padding-top: 80px;
     width: 100%;

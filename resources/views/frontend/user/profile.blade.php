@@ -1,7 +1,7 @@
 @extends('layout.frontend.master')
 
 @section('title')
-    User Profile
+    {{ $user->first_name }}'s Profile
 @endsection
 
 @section('styles')
@@ -10,16 +10,16 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container">
         @include('errors.sessionGeneralErrors')
             <div class="page-header"><h3>Welcome {{ $user->first_name }}</h3></div>
             <br>
         <div class="row container">
-            <div class="col-md-4"><!--left side col-->
+            <div class="col-md-3"><!--left side col-->
                 <div class="container-fluid">
                     <div class="row">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Personal Details</div>
+                            <div class="panel-heading"><i class="fa fa-user fa-2x pull-right" aria-hidden="true"></i> Personal Details</div>
                             <div class="panel panel-body">
                                 Phone: {{ $user->phone }}<br>
                                 Email: {{ $user->email }}<br>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="row">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Account Details</div>
+                            <div class="panel-heading"><i class="fa fa-cc-visa fa-2x pull-right" aria-hidden="true"></i> Account Details</div>
                             <div class="panel-body">
                                 Account type: <strong>{{ $user->account->account_type }}</strong><br>
                                 Account number: <strong>{{ $user->account->account_number }}</strong><br>
@@ -42,36 +42,82 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8"><!--right side col-->
+            <div class="col-md-6"><!--right side col-->
                 <div class="container-fluid">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Payment History</div>
+                        <div class="panel-heading"><i class="fa fa-history fa-2x pull-right" aria-hidden="true"></i> Payment History</div>
                         <div class="panel-body">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Date</th>
+                                        <th>Sent</th>
                                         <th>To</th>
                                         <th>Amount</th>
-                                        <th>Payment purpose</th>
+                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @if($user)
-                                    <p class="hidden">{{ $num = 0 }}</p>
-                                    @foreach($user->payReceiver as $receiver)
-                                        <tr>
-                                            <td>{{++$num}}</td>
-                                            <td>{{$receiver->created_at->diffForHumans()}}</td>
-                                            <td>{{$receiver->name}}</td>
-                                            <td>${{ $receiver->amount}}.00</td>
-                                            <td>{{ $receiver->description }}</td>
-                                        </tr>
-                                        @endforeach
-                                @else
-                                <tr class="well">No Payments to show</tr>
-                                @endif
+                                <p class="hidden">{{ $num = 0 }}</p>
+                                    @if($payhistory)
+
+                                        @foreach($payhistory as $receiver)
+                                            <tr>
+                                                <td>{{$receiver->created_at->diffForHumans()}}</td>
+                                                <td>{{$receiver->name}}</td>
+                                                <td>FJ ${{ $receiver->amount}}.00</td>
+                                                <td>{{ $receiver->description }}</td>
+                                            </tr>
+                                            @endforeach
+                                    @else
+                                    <tr class="well">No Payments to show</tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-4">
+                                    {{ $payhistory->render() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-calendar fa-2x pull-right" aria-hidden="true"></i> Scheduled Payment</div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>To</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>To</td>
+                                    <td>Be</td>
+                                    <td><a href="">Implemented</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-calendar fa-2x pull-right" aria-hidden="true"></i> Payment Summary</div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                You have already made {{ $totalPay }} Payments since {{ $user->account->created_at->diffForHumans() }}
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

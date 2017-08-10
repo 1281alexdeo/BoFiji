@@ -7,6 +7,7 @@ use App\Address;
 use App\Custom\CustomAccount;
 use App\Custom\CustomUser;
 use App\CustomAddress;
+use App\PayReceiver;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -23,11 +24,10 @@ class UserController extends Controller
 
 
     public  function index(Request $request, $id = null){
-        if(Session::has('id')){
-            $id = Session::get('id');
-            $user = User::find($id);
-            return view('frontend.index', ['user' => $user]);
-        }
+            if(Session::has('user')){
+                $user = Session::get('user');
+                return view('frontend.index', ['user' => $user]);
+            }
 
         return view('frontend.index');
     }
@@ -44,7 +44,7 @@ class UserController extends Controller
 
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
             $user = User::where(['email' => $request['email']])->first();
-            $request->session()->put('id',$user->id);
+            $request->session()->put(['id' => $user->id,'user' => $user]);
             return redirect()->route('user.profile',['id' => $user->id]);
         }
         return redirect()->back()->with(['fail' => 'Check your email or password']);
@@ -58,7 +58,10 @@ class UserController extends Controller
 
     public function getProfile($id){
         $user = User::find($id);
-        return view('frontend.user.profile',['user' => $user]);//errors with this method and related routes
+        $paymenthistory = PayReceiver::where('user_id',$id)->orderBy('created_at', 'desc')->paginate(5);
+        $totalPay = PayReceiver::where('user_id', $id)->count();
+
+        return view('frontend.user.profile',['user' => $user, 'payhistory' => $paymenthistory, 'totalPay' => $totalPay]);
     }
 
     public function postProfile($id){
@@ -90,7 +93,7 @@ class UserController extends Controller
             'fnpfNumber' => 'required',
             'fircID' => 'required',
             'accountType' => 'required',
-            'debitCardNumber' => 'required',
+            'debitCardNumber' => 'required',//still do not know if this one is required
             'branch' => 'required'
         ]);
 
@@ -135,7 +138,7 @@ class UserController extends Controller
 
     public function sendEmail(Request $request){
         $data = [
-            'title' => 'Thank you for banking up with us',
+            'title' => 'Thank you for banking with us',
             'content' => 'Your password is: \'test_pw\'. Use it to login by clicking the link '
         ];
 
@@ -200,9 +203,10 @@ class UserController extends Controller
         $address->user()->save($user);
         $account->user()->save($user);
 
-    /*    return redirect()->route('user.signin')->with([
+    /*    return redirect()->route('user.signin')->with([  //no redirect since user will check his/her email for password
             'success' => $request['firstName'] . ' '. $request['lastName']. ' successfully registered.'
         ]);*/
 
     }
+
 }
