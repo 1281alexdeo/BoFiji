@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\PayReceiver;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class PaymentController extends Controller
             $user_id = Session::has('id') ? Session::get('id') : null;//retrieve user id from session
 
             $user = User::where('id', $user_id)->first(); //get user details from db
+            $userAccount = Account::where('id', $user->account_id)->first();//get related account info
 
             $receiver = new PayReceiver([
                 'name' => $request['receiver_name'],
@@ -40,7 +42,8 @@ class PaymentController extends Controller
                 'description' => $request['description']
             ]);
             $user->payReceiver()->save($receiver);//create payReceive Table
-
+            $userAccount->balance -= $request['amount'];//deduct pay amount from user balance
+            $userAccount->save();
 
 
             //get user name and email for emailing
@@ -54,11 +57,11 @@ class PaymentController extends Controller
                 'description' => $request['description']
             ];
 
-            /*DISABLE FOR TESTING PURPOSES .... you can uncomment this if email functionality is important/testable
+
             //send the email
             Mail::send('email.paymentNotification', $contentData, function($message) use($userData){
                 $message->to($userData['email'], $userData['name'])->subject('BoF Transaction Summary');
-            });*/
+            });
 
             //redirect back to user profile with success message
             return redirect()->route('user.profile',$user_id)->with(['success' => 'Successfully transferred $'.$request['amount']]);

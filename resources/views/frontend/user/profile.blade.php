@@ -31,6 +31,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading"><i class="fa fa-cc-visa fa-2x pull-right" aria-hidden="true"></i> Account Details</div>
                             <div class="panel-body">
+                                Balance: $<strong>{{ $user->account->balance }}.00</strong><br>
                                 Account type: <strong>{{ $user->account->account_type }}</strong><br>
                                 Account number: <strong>{{ $user->account->account_number }}</strong><br>
                                 FNPF Ref: <strong>{{ $user->account->fnpf_number }}</strong><br>

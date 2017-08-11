@@ -152,10 +152,12 @@ class UserController extends Controller
 
         $user = ['email' => $request['email'], 'name' => $request['firstName']];
 
+        //send email for verification and password delivery to right recipient
         $mail = Mail::send('email.test',$data,function($message) use($user){
             $message->to($user['email'], $user['name'])->subject('Account Activation');
 
         });
+
         $token = Str::random(40);
         $request->session()->put('token', $token);//token to be compared later during verification
 
@@ -187,6 +189,7 @@ class UserController extends Controller
         ]);
         $address->save();
 
+        $defaultBalance = 10000;
         $account = new Account([
             'account_number' => $request['accountNumber'],
             'fnpf_number' => $request['fnpfNumber'],
@@ -194,7 +197,7 @@ class UserController extends Controller
             'account_type' => $request['accountType'],
             'debit_card_number' => $request['debitCardNumber'],
             'branch' => $request['branch'],
-            'balance' => 10000
+            'balance' => $defaultBalance
         ]);
         $account->save();
 

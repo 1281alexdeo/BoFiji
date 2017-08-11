@@ -20,7 +20,7 @@ class CreateAccountsTable extends Migration
             $table->string('account_type');
             $table->string('debit_card_number');
             $table->string('branch');
-            $table->integer('balance')->unsigned();
+            $table->integer('balance');
             $table->timestamps();
         });
     }
