@@ -45,7 +45,7 @@ class UserController extends Controller
 
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
             $user = User::where(['email' => $request['email']])->first();
-            $request->session()->put(['id' => $user->id,'user' => $user]);
+            $request->session()->put(['id' => $user->id,'user' => $user]);//put user in session
             return redirect()->route('user.profile',['id' => $user->id]);
         }
         return redirect()->back()->with(['fail' => 'Check your email or password']);
@@ -194,6 +194,7 @@ class UserController extends Controller
             'account_type' => $request['accountType'],
             'debit_card_number' => $request['debitCardNumber'],
             'branch' => $request['branch'],
+            'balance' => 10000
         ]);
         $account->save();
 

@@ -22,6 +22,7 @@ elixir(function(mix) {
 
 
     .scripts([
-        'bootstrap.js'
+        'bootstrap.js',
+        'modal.js'
     ], './public/js/app.js')
 });

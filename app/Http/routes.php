@@ -82,16 +82,6 @@ Route::group(['prefix' => 'user'], function(){
             'as' => 'user.signout'
         ]);
 
-        Route::get('/checkout',[
-            'uses' => 'PaymentController@getCheckout',
-            'as' => 'checkout'
-        ]);
-
-        Route::post('/checkout',[
-            'uses' => 'PaymentController@postCheckout',
-            'as' => 'checkout'
-        ]);
-
         Route::get('schedule/payment', [
             'uses' => 'PaymentController@getSchedulePay',
             'as' => 'schedule.pay'

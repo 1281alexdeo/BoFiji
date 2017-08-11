@@ -28,16 +28,41 @@ class PaymentController extends Controller
         ]);
 
         if(!is_null($request['amount'])){
-            //store data in session
-            $request->session()->put([
-                'receiver' => $request['receiver_name'],
-                'receiver_account' => $request['receiver_account_number'],
-                'receiver_amount' => $request['amount'],
+
+            $user_id = Session::has('id') ? Session::get('id') : null;//retrieve user id from session
+
+            $user = User::where('id', $user_id)->first(); //get user details from db
+
+            $receiver = new PayReceiver([
+                'name' => $request['receiver_name'],
+                'account_number' => $request['receiver_account_number'],
+                'amount' => $request['amount'],
                 'description' => $request['description']
             ]);
-            return redirect()->route('checkout');
+            $user->payReceiver()->save($receiver);//create payReceive Table
+
+            //get user name and email for emailing
+            $userData = ['email' => $user->email, 'name' =>$user->first_name];
+
+            //prepare data for emailing
+            $contentData = [
+                'transID' => Str::random(5),
+                'receiverName' => $request['receiver_name'],
+                'amount' => $request['amount'],
+                'description' => $request['description']
+            ];
+
+            /*DISABLE FOR TESTING PURPOSES .... you can uncomment this if email functionality is important/testable
+            //send the email
+            Mail::send('email.paymentNotification', $contentData, function($message) use($userData){
+                $message->to($userData['email'], $userData['name'])->subject('BoF Transaction Summary');
+            });*/
+
+            //redirect back to user profile with success message
+            return redirect()->route('user.profile',$user_id)->with(['success' => 'Successfully transferred $'.$request['amount']]);
         }
 
+        //redirect back to where user came from
         return redirect()->back()->with(['fail' => 'Check your input data']);
     }
 
@@ -49,67 +74,6 @@ class PaymentController extends Controller
         $user = Session::has('user') ? Session::get('user') : null;
         //send the amount to view
         return view('frontend.payment.checkout', ['total' => $total_amount, 'user' => $user]);
-    }
-
-    public function postCheckout(Request $request){
-        $this->validate($request,[
-           'name' => 'required',
-           'card-name' => 'required',
-            'card-expiry-month' => 'required',
-            'card-expiry-year' => 'required',
-            'card-cvc' => 'required'
-        ]);
-
-        if(Session::has('receiver')){
-
-                $receiverName =Session::get('receiver');
-                $receiverAccount = Session::get('receiver_account');
-                $receiverAmount = Session::get('receiver_amount');
-                $receiverDescription = Session::get('description');
-
-                $user_id = Session::get('id');
-                $user = User::find($user_id);
-
-                $receiver = new PayReceiver([
-                    'name' => $receiverName,
-                    'account_number' => $receiverAccount,
-                    'amount' => $receiverAmount,
-                    'description' => $receiverDescription
-                ]);
-                $user->payReceiver()->save($receiver);
-                $concatAmount = $receiverAmount.'.00';
-
-                $userData = ['email' => $user->email, 'name' =>$user->first_name];
-
-//                $contentData = [
-//                    'title' => 'Your money transfer was successful',
-//                    'content' => 'CHECKOUT AMOUNT : $' . $receiverAmount . '.00. TO : '. $receiverName .'.'
-//                ];
-
-                $contentData = [
-                    'transID' => Str::random(5),
-                    'receiverName' => $receiverName,
-                    'amount' => $receiverAmount,
-                    'description' => $receiverDescription
-                ];
-
-                //send the email
-                Mail::send('email.paymentNotification', $contentData, function($message) use($userData){
-                    $message->to($userData['email'], $userData['name'])->subject('BoF Transaction Summary');
-                });
-
-                //send text message
-//                Nexmo::message()->send([
-//                    'to' => '6797221422',
-//                    'from' => 'Bank of Fiji',
-//                    'text' => 'Successfully send a message'
-//                ]);
-
-                return redirect()->route('user.profile',$user_id)->with(['success' => 'Successfully transferred $'.$concatAmount]);
-        }
-
-        //if fail redirect to pay now page
-        return redirect()->route('pay.now')->with(['fail' => 'Check your card details']);
     }
 
     public function getSchedulePay(){
