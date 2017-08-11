@@ -41,6 +41,8 @@ class PaymentController extends Controller
             ]);
             $user->payReceiver()->save($receiver);//create payReceive Table
 
+
+
             //get user name and email for emailing
             $userData = ['email' => $user->email, 'name' =>$user->first_name];
 
