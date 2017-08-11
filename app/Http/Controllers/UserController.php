@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -48,9 +49,10 @@ class UserController extends Controller
         return redirect()->back()->with(['fail' => 'Check your email or password']);
     }
 
-    public function signout(){
+    public function signout(Request $request){
+        Session::flush();
+        Cache::flush();
         Auth::logout();
-
         return redirect()->route('home');
     }
 

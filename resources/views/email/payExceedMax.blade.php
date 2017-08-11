@@ -20,6 +20,7 @@
 <table>
     <thead>
     <tr>
+        <th>Transactoin ID</th>
         <th>To</th>
         <th>Amount</th>
         <th>Description</th>
@@ -27,13 +28,13 @@
     </thead>
     <tbody>
     <tr>
+        <td>{{ $transID }}</td>
         <td>{{ $recipientName }}</td>
         <td>{{ $amount }}</td>
         <td>{{ $description }}</td>
     </tr>
     </tbody>
 </table>
-<br>
 <hr>
 <br>
 <p>Please click <a href="{{ route('payexceed.confirm',['email' => $email, 'token' => $token]) }}">confirm</a> to proceed.</p><br>

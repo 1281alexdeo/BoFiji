@@ -51,6 +51,7 @@ class PaymentController extends Controller
                     //prepare data for emailing
                     $contentData = [
                         'token' => $token,
+                        'transID' => rand(0,1000000),
                         'email' => $userData['email'],
                         'recipientName' => $request['receiver_name'],
                         'senderName' => $userData['name'],
@@ -93,7 +94,7 @@ class PaymentController extends Controller
 
             //prepare data for emailing
             $contentData = [
-                'transID' => rand(6,6),
+                'transID' => rand(0,1000000),
                 'receiverName' => $request['receiver_name'],
                 'amount' => $request['amount'],
                 'description' => $request['description']
