@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Address;
-use App\Custom\CustomAccount;
-use App\Custom\CustomUser;
-use App\CustomAddress;
 use App\PayReceiver;
 use App\User;
 use Illuminate\Http\Request;
@@ -105,40 +102,12 @@ class UserController extends Controller
             'branch' => 'required'
         ]);
 
-        //store respective class attr in session classes
-        $this->storeTempData($request);
+
         //send email to user
         $this->sendEmail($request);
         return redirect()->route('email.verification');
     }
 
-    public function storeTempData(Request $request){ //to be used for activating user in later migration
-        $storeAddress = new CustomAddress(
-            $request['houseNumber'],
-            $request['street'],
-            $request['suburb'],
-            $request['town']
-        );
-        $storedAccount = new CustomAccount(
-            $request['accountNumber'],
-            $request['fnpfNumber'],
-            $request['fircID'],
-            $request['accountType'],
-            $request['debitCardNumber'],
-            $request['branch']
-        );
-
-        $storeUser = new CustomUser(
-            $request['firstName'],
-            $request['lastName'],
-            $request['gender'],
-            $request['marriedStatus'],
-            $request['tinNumber'],
-            $request['occupation'],
-            $request['email'],
-            $request['phone']
-        );
-    }
 
     public function getEmailVerification(){
         return view('email.verification');
