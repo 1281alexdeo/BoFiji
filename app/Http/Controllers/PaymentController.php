@@ -51,7 +51,7 @@ class PaymentController extends Controller
 
             //prepare data for emailing
             $contentData = [
-                'transID' => Str::random(5),
+                'transID' => rand(6,6),
                 'receiverName' => $request['receiver_name'],
                 'amount' => $request['amount'],
                 'description' => $request['description']
@@ -69,16 +69,6 @@ class PaymentController extends Controller
 
         //redirect back to where user came from
         return redirect()->back()->with(['fail' => 'Check your input data']);
-    }
-
-    public function getCheckout(){
-        //get checkout amount from session
-        $send_total = Session::has('receiver_amount') ? Session::get('receiver_amount') : null;
-        //concatenate with prefix 00
-        $total_amount = $send_total.'.00';
-        $user = Session::has('user') ? Session::get('user') : null;
-        //send the amount to view
-        return view('frontend.payment.checkout', ['total' => $total_amount, 'user' => $user]);
     }
 
     public function getSchedulePay(){
