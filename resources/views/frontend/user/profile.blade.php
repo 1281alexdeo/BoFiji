@@ -75,7 +75,7 @@
                                 </tbody>
                             </table>
                             <div class="row">
-                                <div class="col-sm-6 col-sm-offset-4">
+                                <div class="col-sm-6 col-sm-offset-4"><!--pagination-->
                                     {{ $payhistory->render() }}
                                 </div>
                             </div>

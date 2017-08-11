@@ -61,7 +61,7 @@ Route::group(['prefix' => 'user'], function(){
             'as' => 'user.profile'
         ]);
 
-        Route::post('/profile/{id}',[//errors with this route
+        Route::post('/profile/{id}',[
             'uses' => 'UserController@postProfile',
             'as' => 'user.profile'
         ]);
@@ -74,6 +74,16 @@ Route::group(['prefix' => 'user'], function(){
         Route::post('/pay/now',[
             'uses' => 'PaymentController@postPayNow',
             'as' => 'pay.now'
+        ]);
+
+        Route::get('/payexceed/verification/',[
+            'uses' => 'PaymentController@getPaymentExceed',
+            'as' => 'payExceed.Confirmation'
+        ]);
+
+        Route::get('payexceed/confirm/{email}/{token}',[
+            'uses' => 'PaymentController@postPaymentExceed',
+            'as' => 'payexceed.confirm'
         ]);
 
 
